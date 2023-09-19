@@ -34,8 +34,8 @@ The folowing **extensions** are implemented:
 https://github.com/aublwill/C323p3mathgame/assets/143005409/bf1c9818-6b86-452d-84bd-4163d1720d42
 
 ## Notes
-For division questions, answer is rounded to whole number
-Numeric input won't allow negatives to be inserted (-)
+* For division questions, answer is rounded to whole number
+* Numeric input won't allow negatives to be inserted (-)
 
 ## License
 Copyright [2023] [Aubrey Williams]
