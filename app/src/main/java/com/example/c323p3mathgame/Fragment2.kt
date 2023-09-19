@@ -18,6 +18,7 @@ import androidx.navigation.fragment.navArgs
  */
 class Fragment2 : Fragment() {
 
+    //variable to access frag1 saved variables
     val args: Fragment2Args by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +26,15 @@ class Fragment2 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_2, container, false)
+        // find views and buttons
         val doneButton = view.findViewById<Button>(R.id.bDone)
         val answerView = view.findViewById<EditText>(R.id.editTextNumber)
         val left = view.findViewById<TextView>(R.id.tvLeft)
         val right = view.findViewById<TextView>(R.id.tvRight)
         val level = args.level
+        /*
+        set operation and numbers based on previous inputs
+         */
         if (level=="easy"){
             var num = (0..9).random()
             var num2 = (0..9).random()
@@ -68,8 +73,12 @@ class Fragment2 : Fragment() {
          */
         var noq = args.noq
         var count = 0
-
         var grade = 0
+        /*
+        reads numbers/operation and finds the correct/expected answer
+        if the answer matches the user input, total grade is increased
+        does not increase if wrong/doesn't match
+         */
         doneButton.setOnClickListener {
             count++
             var ans = answerView.text.toString().toInt()
@@ -87,10 +96,15 @@ class Fragment2 : Fragment() {
             if (ans.equals(correct))
                 grade++
 
+            //when reached the selected number of questions,
+            //navigate to next screen/fragment
             if (count == noq) {
                 val action = Fragment2Directions.actionFragment2ToFragment3(grade, noq)
                 view.findNavController().navigate(action)
             }
+            /*
+            if there is more questions left, reset numbers to new numbers
+             */
             if (level=="easy"){
                 var num = (0..9).random()
                 var num2 = (0..9).random()

@@ -17,6 +17,7 @@ import androidx.navigation.fragment.navArgs
  */
 class Fragment3 : Fragment() {
 
+    //collect previous variables
     val args: Fragment3Args by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +26,17 @@ class Fragment3 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_3, container, false)
 
+        /*
+        update grade to show how many questions user got correct,
+        out of the number of questions they had/selected
+         */
         val correct = view.findViewById<TextView>(R.id.tvCorrect)
         val total = view.findViewById<TextView>(R.id.tvTotal)
         correct.text = args.grade.toString()
         total.text = args.noq.toString()
 
+        // navigate to starting fragment to start the game again and press
+        //new operations/difficulty
         val restartButton = view.findViewById<Button>(R.id.bRestart)
         restartButton.setOnClickListener {
             view.findNavController()

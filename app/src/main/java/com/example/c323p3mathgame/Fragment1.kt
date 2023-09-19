@@ -24,7 +24,9 @@ class Fragment1 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_1, container, false)
 
-
+        /*
+        set number of questions view and buttons
+         */
         val numQ = view.findViewById<TextView>(R.id.tvNofQ)
         val more = view.findViewById<Button>(R.id.bMore)
         more.setOnClickListener {
@@ -35,6 +37,9 @@ class Fragment1 : Fragment() {
             if (numQ.text.toString().toInt() > 0)
                 numQ.text = (numQ.text.toString().toInt() - 1).toString()
         }
+        /*
+        find buttons for access on first page/fragment
+         */
         val startButton = view.findViewById<Button>(R.id.bStart)
         val easy = view.findViewById<RadioButton>(R.id.rbEasy)
         val med = view.findViewById<RadioButton>(R.id.rbMedium)
@@ -46,6 +51,10 @@ class Fragment1 : Fragment() {
         var count = 0
         var count2 = 0
 
+        /*
+        when a radio button is clicked, prevents other buttons from also being pressed
+        when its double clicked, it un selects and makes all other buttons clickable again
+         */
         easy.setOnClickListener {
             med.isClickable = false
             hard.isClickable = false
@@ -125,9 +134,13 @@ class Fragment1 : Fragment() {
             } else count2 = 1
         }
 
+        /*
+        functionality for start button
+         */
         startButton.setOnClickListener {
             var oper = ""
             var level = ""
+            //find selected operation
             if (add.isChecked)
                 oper = "+"
             if (sub.isChecked)
@@ -136,6 +149,7 @@ class Fragment1 : Fragment() {
                 oper = "X"
             if (div.isChecked)
                 oper = "/"
+            //find selected number of questions
             var noq = numQ.text.toString().toInt()
             if (easy.isChecked)
                 level = "easy"
@@ -143,8 +157,9 @@ class Fragment1 : Fragment() {
                 level = "medium"
             if (hard.isChecked)
                 level = "hard"
-            val action = Fragment1Directions.actionFragment1ToFragment2(oper, noq, level)
 
+            //save variables and navigate to next page
+            val action = Fragment1Directions.actionFragment1ToFragment2(oper, noq, level)
             view.findNavController().navigate(action)
 
         }
