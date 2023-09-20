@@ -1,3 +1,5 @@
+Collaboration with Kuzey Bektas
+
 # C323p3mathgame
 This project functions as a game to practice math.
 
