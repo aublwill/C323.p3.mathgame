@@ -99,7 +99,7 @@ class Fragment2 : Fragment() {
             //when reached the selected number of questions,
             //navigate to next screen/fragment
             if (count == noq) {
-                val action = Fragment2Directions.actionFragment2ToFragment3(grade, noq)
+                val action = Fragment2Directions.actionFragment2ToFragment1(grade,noq,op)
                 view.findNavController().navigate(action)
             }
             /*

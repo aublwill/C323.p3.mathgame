@@ -40,7 +40,7 @@ class Fragment3 : Fragment() {
         val restartButton = view.findViewById<Button>(R.id.bRestart)
         restartButton.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_fragment3_to_fragment1)
+              //  .navigate(R.id.action_fragment3_to_fragment1)
         }
         return view
     }
