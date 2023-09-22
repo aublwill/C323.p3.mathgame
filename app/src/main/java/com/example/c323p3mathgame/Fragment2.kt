@@ -84,11 +84,17 @@ class Fragment2 : Fragment() {
          */
         doneButton.setOnClickListener {
             count++
+            /*
+            create toast with two different options
+             */
             val toastC = Toast.makeText(context, "Correct. Good work!", Toast.LENGTH_SHORT)
             val toastW = Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT)
+            /*
+            create correct/wrong media files
+             */
             val mpC = MediaPlayer.create(context, R.raw.correct)
             val mpW = MediaPlayer.create(context, R.raw.wrong)
-            //mpC.setVolume(0.5F, 0.5F)
+
             var ans = answerView.text.toString().toInt()
             var correct = 0
             var lAns = left.text.toString().toInt()
@@ -102,6 +108,9 @@ class Fragment2 : Fragment() {
             if (op.equals("X"))
                 correct = lAns*rAns
 
+            /*
+            show toast and play sound whether users answer is correct or wrong
+             */
             if (ans.equals(correct)) {
                 grade++
                 toastC.show()
@@ -113,7 +122,7 @@ class Fragment2 : Fragment() {
             }
 
             //when reached the selected number of questions,
-            //navigate to next screen/fragment
+            //navigate to next screen/fragment (replica of first, but with message)
             if (count == noq) {
                 val action = Fragment2Directions.actionFragment2ToFragment3(op,grade, noq)
                 view.findNavController().navigate(action)

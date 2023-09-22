@@ -30,9 +30,11 @@ class Fragment3 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_3, container, false)
         val grade = args.grade
-
         var text = view.findViewById<TextView>(R.id.tvMessage2)
 
+        /*
+        create message based on whether the user got below or over 80% on the previous attempt
+         */
         val good = "Good job!"
         val bad = "You need to practice more!"
         var op = ""
@@ -67,7 +69,7 @@ class Fragment3 : Fragment() {
                 numQ.text = (numQ.text.toString().toInt() - 1).toString()
         }
         /*
-        find buttons for access on first page/fragment
+        find buttons for access on page/fragment
          */
         val startButton = view.findViewById<Button>(R.id.bStart)
         val easy = view.findViewById<RadioButton>(R.id.rbEasy)
@@ -187,12 +189,11 @@ class Fragment3 : Fragment() {
             if (hard.isChecked)
                 level = "hard"
 
-            //save variables and navigate to next page
+            //save variables and navigate to question page
             val action = Fragment3Directions.actionFragment3ToFragment2(oper, noq, level)
             view.findNavController().navigate(action)
 
         }
-        // }
 
         return view
     }

@@ -27,7 +27,6 @@ class Fragment1 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_1, container, false)
 
-
             /*
         set number of questions view and buttons
          */
