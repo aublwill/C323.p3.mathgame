@@ -28,8 +28,8 @@
         android:label="fragment_2"
         tools:layout="@layout/fragment_2" >
         <action
-            android:id="@+id/action_fragment2_to_fragment1"
-            app:destination="@id/fragment1" />
+            android:id="@+id/action_fragment2_to_fragment3"
+            app:destination="@id/fragment3" />
         <argument
             android:name="oper"
             app:argType="string"/>
@@ -49,8 +49,11 @@
         tools:layout="@layout/fragment_3">
 
         <action
-            android:id="@+id/action_fragment3_to_fragment1"
-            app:destination="@id/fragment1" />
+            android:id="@+id/action_fragment3_to_fragment2"
+            app:destination="@id/fragment2" />
+        <argument
+            android:name="oper"
+            app:argType="string"/>
         <argument
             android:name="grade"
             app:argType="integer"/>

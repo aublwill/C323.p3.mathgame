@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import java.lang.reflect.InvocationTargetException
 
 /**
  * A simple [Fragment] subclass.
@@ -26,30 +27,7 @@ class Fragment1 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_1, container, false)
 
-        val text = view.findViewById<TextView>(R.id.tvMessage)
 
-        val args: Fragment1Args by navArgs()
-
-        if (args.oper!=null){
-       // args.let {
-            val good = "Good job!"
-            val bad = "You need to practice more!"
-            var op = ""
-            if (args.oper.equals("+"))
-                op = "addition"
-            else if (args.oper.equals("-"))
-                op = "subtraction"
-            else if (args.oper.equals("X"))
-                op = "multiplication"
-            else if (args.oper.equals("/"))
-                op = "division"
-            if (args.grade / args.noq >= .8)
-                text.text =
-                    "You got " + args.grade.toString() + " out of " + args.noq.toString() + " in " + op + ". " + good
-            else
-                text.text =
-                    "You got " + args.grade.toString() + " out of " + args.noq.toString() + " in " + op + ". " + bad
-        }
             /*
         set number of questions view and buttons
          */
@@ -176,7 +154,7 @@ class Fragment1 : Fragment() {
             if (div.isChecked)
                 oper = "/"
             //find selected number of questions
-            var noq = numQ.text.toString().toInt()
+            val noq = numQ.text.toString().toInt()
             if (easy.isChecked)
                 level = "easy"
             if (med.isChecked)

@@ -1,5 +1,7 @@
 package com.example.c323p3mathgame
 
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 
@@ -81,6 +84,11 @@ class Fragment2 : Fragment() {
          */
         doneButton.setOnClickListener {
             count++
+            val toastC = Toast.makeText(context, "Correct. Good work!", Toast.LENGTH_SHORT)
+            val toastW = Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT)
+            val mpC = MediaPlayer.create(context, R.raw.correct)
+            val mpW = MediaPlayer.create(context, R.raw.wrong)
+            //mpC.setVolume(0.5F, 0.5F)
             var ans = answerView.text.toString().toInt()
             var correct = 0
             var lAns = left.text.toString().toInt()
@@ -93,13 +101,21 @@ class Fragment2 : Fragment() {
                 correct = lAns/rAns
             if (op.equals("X"))
                 correct = lAns*rAns
-            if (ans.equals(correct))
+
+            if (ans.equals(correct)) {
                 grade++
+                toastC.show()
+                mpC.start()
+            }
+            else {
+                toastW.show()
+                mpW.start()
+            }
 
             //when reached the selected number of questions,
             //navigate to next screen/fragment
             if (count == noq) {
-                val action = Fragment2Directions.actionFragment2ToFragment1(grade,noq,op)
+                val action = Fragment2Directions.actionFragment2ToFragment3(op,grade, noq)
                 view.findNavController().navigate(action)
             }
             /*
