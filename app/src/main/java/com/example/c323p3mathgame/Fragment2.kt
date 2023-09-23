@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.NavHost
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 
@@ -120,11 +121,10 @@ class Fragment2 : Fragment() {
                 toastW.show()
                 mpW.start()
             }
-
             //when reached the selected number of questions,
             //navigate to next screen/fragment (replica of first, but with message)
             if (count == noq) {
-                val action = Fragment2Directions.actionFragment2ToFragment3(op,grade, noq)
+                val action = Fragment2Directions.actionFragment2ToFragment1(grade,noq, op)
                 view.findNavController().navigate(action)
             }
             /*

@@ -1,5 +1,6 @@
 package com.example.c323p3mathgame
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,9 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.navigation.NavArgs
+import androidx.navigation.NavHost
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import java.lang.reflect.InvocationTargetException
 
@@ -27,6 +30,34 @@ class Fragment1 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_1, container, false)
 
+        val args: Fragment1Args by navArgs()
+        if (args.grade!=-1) {
+            val grade = args.grade
+            var text = view.findViewById<TextView>(R.id.tvMessage2)
+
+            /*
+        create message based on whether the user got below or over 80% on the previous attempt
+         */
+            val good = "Good job!"
+            val bad = "You need to practice more!"
+            var op = ""
+            if (args.oper.equals("+"))
+                op = "addition"
+            else if (args.oper.equals("-"))
+                op = "subtraction"
+            else if (args.oper.equals("X"))
+                op = "multiplication"
+            else if (args.oper.equals("/"))
+                op = "division"
+            if (args.grade / args.noq >= .8)
+                text.text =
+                    "You got " + grade.toString() + " out of " + args.noq.toString() + " in " + op + ". \n" + good
+            else {
+                text.text =
+                    "You got " + grade.toString() + " out of " + args.noq.toString() + " in " + op + ". \n" + bad
+                text.setTextColor(Color.RED)
+            }
+        }
             /*
         set number of questions view and buttons
          */
