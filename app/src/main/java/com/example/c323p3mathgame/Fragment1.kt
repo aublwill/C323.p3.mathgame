@@ -30,6 +30,8 @@ class Fragment1 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_1, container, false)
 
+        //create variable to collect previous values
+        //checks to see if they have been updated
         val args: Fragment1Args by navArgs()
         if (args.grade!=-1) {
             val grade = args.grade

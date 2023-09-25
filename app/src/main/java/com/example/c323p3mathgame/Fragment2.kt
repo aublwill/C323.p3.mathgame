@@ -96,6 +96,7 @@ class Fragment2 : Fragment() {
             val mpC = MediaPlayer.create(context, R.raw.correct)
             val mpW = MediaPlayer.create(context, R.raw.wrong)
 
+            //reads math question to define answer as correct or wrong
             var ans = answerView.text.toString().toInt()
             var correct = 0
             var lAns = left.text.toString().toInt()
@@ -122,7 +123,7 @@ class Fragment2 : Fragment() {
                 mpW.start()
             }
             //when reached the selected number of questions,
-            //navigate to next screen/fragment (replica of first, but with message)
+            //navigate to beginning screen/fragment but with message based on performance
             if (count == noq) {
                 val action = Fragment2Directions.actionFragment2ToFragment1(grade,noq, op)
                 view.findNavController().navigate(action)
