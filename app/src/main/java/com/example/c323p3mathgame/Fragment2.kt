@@ -24,6 +24,14 @@ class Fragment2 : Fragment() {
 
     //variable to access frag1 saved variables
     val args: Fragment2Args by navArgs()
+
+    /*
+     * This method is used to create the view of second fragment.
+     * @param inflator This is the LayoutInflator parameter
+     * @param container This is the ViewGroup parameter
+     * @param savedInstanceState This is the Bundle parameter
+     * @return view This returns the fragmnet view
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
