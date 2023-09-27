@@ -17,3 +17,20 @@ The following **required** functionality is completed:
 * [] user can input an answer and press done to get next question (or finish)
 * [] a new question will be displayed, but won't show final grade until the end
 * [] once all questions are answered, user presses 'done'
+* [] user nativates to final page that displays their grade (correct / number of questions)
+* [] user can press 'do it again' to navigate to first page and re-select new difficulty/operation
+
+The folowing **extensions** are implemented:
+* import android.os.Bundle
+* import androidx.fragment.app.Fragment
+* import android.view.LayoutInflater
+* import android.view.View
+* import android.view.ViewGroup
+* import android.widget.Button
+* import android.widget.TextView
+* import androidx.navigation.findNavController
+* import androidx.navigation.fragment.navArgs
+  
+## Video Walkthrough 
+
+https://github.com/aublwill/C323p3mathgame/assets/143005409/bf1c9818-6b86-452d-84bd-4163d1720d42
